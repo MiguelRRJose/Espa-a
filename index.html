@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bienvenido a España</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="welcome">
+  <div class="container">
+    <h1>Bienvenido a España</h1>
+    <button id="enter-btn">Entrar</button>
+  </div>
+
+  <!-- Fondo oscuro -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Texto animado -->
+  <div id="ole-text">¡Olé!</div>
+
+  <script>
+    const btn = document.getElementById("enter-btn");
+    const oleText = document.getElementById("ole-text");
+    const overlay = document.getElementById("overlay");
+
+    btn.addEventListener("click", () => {
+      overlay.classList.add("show");
+      oleText.classList.add("show");
+      setTimeout(() => {
+        window.location.href = "madrid.html";
+      }, 2200);
+    });
+  </script>
+</body>
+</html>

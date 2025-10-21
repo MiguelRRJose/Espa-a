@@ -1,0 +1,224 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+
+/* Pantalla de bienvenida */
+body.welcome {
+  background: linear-gradient(135deg, #e63946, #f1faee);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 5px #00000055;
+}
+
+#enter-btn {
+  background-color: #1d3557;
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#enter-btn:hover {
+  background-color: #457b9d;
+  transform: scale(1.05);
+}
+
+/* Fondo oscuro y difuminado al mostrar “Olé!” */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Texto animado “¡Olé!” */
+#ole-text {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+  font-size: 5em;
+  background: linear-gradient(90deg, #ffcc00, #e63946);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.8s ease;
+  z-index: 2;
+}
+
+#ole-text.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.2);
+  animation: popFade 2s ease forwards;
+}
+
+/* Efecto de aparición y desaparición */
+@keyframes popFade {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.3);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Página Madrid */
+body.madrid {
+  background: #f1faee;
+  color: #1d3557;
+}
+
+header {
+  background-color: #e63946;
+  color: white;
+  padding: 20px;
+}
+
+main {
+  padding: 40px 10%;
+  text-align: left;
+}
+
+h2 {
+  color: #e63946;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Tarjetas de atracciones */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #457b9d;
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.card-content {
+  position: relative;
+  z-index: 2;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* sombra oscura */
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.card:hover::after {
+  opacity: 1;
+}
+
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('images/placeholder.jpg') center/cover no-repeat;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+footer {
+  margin-top: 50px;
+  padding: 20px;
+  background: #1d3557;
+  color: white;
+  text-align: center;
+}
+
+.card-royal::before {
+  background: url('imagenes/royal.jpg') center/cover no-repeat;
+}
+
+.card-retiro::before {
+  background: url('imagenes/retiro.jpg') center/cover no-repeat;
+}
+
+.card-prado::before {
+  background: url('imagenes/prado.jpg') center/cover no-repeat;
+}
+
+.card-plaza::before {
+  background: url('imagenes/plaza.jpg') center/cover no-repeat;
+}
+
+.hero-wrapper {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.5s ease;
+}
+
+.hero-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+/* Mostrar imagen al hacer hover sobre el header */
+header:hover + .hero-wrapper {
+  height: 400px;
+}
+
+header:hover + .hero-wrapper .hero-image {
+  opacity: 1;
+}
+
